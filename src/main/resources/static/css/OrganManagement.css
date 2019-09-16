@@ -1,0 +1,25 @@
+.ztree li span.button.add {
+    margin-left:2px;
+    margin-right: -1px;
+    background-position:-144px 0;
+    vertical-align:top;
+    *vertical-align:middle
+}
+.showTree{
+    border: 4px solid #11C2EE;
+    overflow-y:scroll;
+    overflow-x:scroll;
+    margin: 6px 0;
+    width: 137%;
+    height: 600px;
+    margin-left: 1px;
+}
+.jigou{
+    background-color: #9acfea;
+    height: 40px;
+    padding-top: 5px;
+    font-family: 黑体;
+    font-size: 20px;
+    font-weight: bolder
+}
+

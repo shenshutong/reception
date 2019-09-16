@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgs.reception.dao.CountyUserDao">
+
+    <!--  //预报数据
+    int forecastData(Forecast forecast);-->
+    <insert id="forecastData" parameterType="Forecast">
+        insert into tb_forecast (id,active_name,active_num,start_time,end_time,entry_time)
+        values (null,#{activeName},#{activeNum},#{startTime},#{endTime},now())
+    </insert>
+
+    <select id="findForecastData" resultType="Forecast">
+        select * from tb_forecast where status=0
+    </select>
+
+    <select id="findDataById" resultType="Forecast">
+        select * from tb_forecast where id=#{id}
+    </select>
+    
+    <!-- //上报数据
+    int reportData(Actual actual);-->
+    <insert id="reportData" parameterType="Actual">
+        insert into tb_actual (id,real_num,new_client,old_client,intention_client,money,active_time,fore_id)
+        values (null,#{realNum},#{newClient},#{oldClient},#{intentionClient},#{money},#{activeTime},#{foreId})
+    </insert>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgs.reception.dao.LoginDao">
+
+   <!--//用户登录
+    User userLogin(String codeName, String password);-->
+    <select id="userLogin" resultType="user">
+      SELECT USER.*
+      FROM
+	  tb_user USER
+      WHERE
+	  USER.code_name = #{codeName}
+	  AND USER.password = #{password}
+    </select>
+    <!-- //验证用户名
+    String getName(String name);-->
+    <select id="getName" parameterType="string" resultType="string">
+        select * from tb_user where code_name=#{name};
+    </select>
+
+</mapper>

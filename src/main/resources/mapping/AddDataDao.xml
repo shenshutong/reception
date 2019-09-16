@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgs.reception.dao.AddDataDao">
+
+    <!--  //预报数据
+    int predictionData(Data data);-->
+    <insert id="predictionData" parameterType="Data">
+        insert into tb_data (id,active_name,plan_num,status,start_time,end_time,entry_time)
+        values (null,#{activeName},#{planNum},0,#{startTime},#{endTime},now())
+    </insert>
+
+    <!--List<Data> findDataByStatus();-->
+    <select id="findDataByStatus" resultType="Data">
+        select * from tb_data where status=0
+    </select>
+
+    <select id="findDataById" resultType="Data">
+        select * from tb_data where id=#{id}
+    </select>
+
+    <!--int updateData(Data data);-->
+    <update id="updateData" parameterType="Data">
+        update tb_data set real_num=#{realNum},new_client=#{newClient},old_client=#{oldClient},
+                intention_client=#{intentionClient},money=#{money},status=1,
+                active_time=#{activeTime},area_id=#{areaId}
+        where id=#{id}
+    </update>
+
+    <!-- int uploadPic(List<Pic> list);-->
+    <insert id="uploadPic" parameterType="Pic">
+        insert into tb_pic (create_time,pic_name,pic_address,data_id)
+        values (now(),#{picName},'pic_address',#{dataId})
+    </insert>
+
+</mapper>

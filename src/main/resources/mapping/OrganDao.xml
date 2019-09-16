@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgs.reception.dao.OrganDao">
+
+    <select id="findOrgan" resultType="Area">
+        select * from tb_area
+    </select>
+
+    <!--  //添加机构
+    int addOrgan(@Param("areaName") String areaName,@Param("organCode") String organCode,@Param("pId") Integer pId);-->
+    <insert id="addOrgan" parameterType="Area">
+        insert into tb_area (id,area_name,organ_code,parent_id) values (null,#{areaName},#{organCode},#{pId})
+    </insert>
+    
+    <!--//删除机构
+    int deleteOrganById(Integer id);-->
+    <delete id="deleteOrganById" parameterType="Area">
+        delete from tb_area where id=#{id}
+    </delete>
+    
+    <!--//修改机构名称
+    int updateOrganName(Integer id, String name);-->
+    <update id="updateOrganName">
+        update tb_area set area_name=#{areaName} where id=#{id}
+    </update>
+
+</mapper>

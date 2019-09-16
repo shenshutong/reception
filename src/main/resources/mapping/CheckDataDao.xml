@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bgs.reception.dao.CheckDataDao">
+
+    <select id="checkManageEcharts" resultType="Data">
+      select d.money,a.area_name from tb_data d,tb_area a where d.area_id=a.id
+    </select>
+
+    <select id="showManageData" resultType="Data">
+      select d.*,a.area_name from tb_data d,tb_area a where d.area_id=a.id
+    </select>
+
+    <!-- ============================================================================= -->
+    <select id="checkCountyUserEcharts" resultType="Data">
+      select d.money,d.area_id,a.area_name from tb_data d,tb_area a where d.area_id=a.id and area_id=#{areaId}
+    </select>
+
+    <select id="showCountyUserData" resultType="Data">
+      select d.*,a.area_name from tb_data d,tb_area a where d.area_id=a.id and area_id=#{areaId}
+    </select>
+
+</mapper>
